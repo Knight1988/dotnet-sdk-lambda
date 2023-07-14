@@ -15,6 +15,9 @@ RUN npm install -g serverless
 # Install Amazon.Lambda.Tools
 RUN dotnet tool install -g Amazon.Lambda.Tools
 
+# Install EF Core CLI
+RUN dotnet tool install --global dotnet-ef
+
 # Export PATH environment variable
 ENV PATH="$PATH:/root/.dotnet/tools"
 
