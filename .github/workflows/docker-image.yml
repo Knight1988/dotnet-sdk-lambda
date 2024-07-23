@@ -21,11 +21,11 @@ jobs:
       shell: bash
       run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag knight1988/dotnet-sdk-lambda${{ env.VERSION }}
+      run: docker build . --file Dockerfile --tag knight1988/dotnet-sdk-lambda:${{ env.VERSION }}
     - name: Log in to DockerHub
       uses: docker/login-action@v1 
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
     - name: Push to DockerHub
-      run: docker push my-image-name:${{ env.VERSION }}
+      run: docker push knight1988/dotnet-sdk-lambda:${{ env.VERSION }}
